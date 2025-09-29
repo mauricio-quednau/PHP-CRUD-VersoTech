@@ -45,3 +45,6 @@ CREATE TABLE user_colors (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (color_id) REFERENCES colors(id)
 );
+
+4. Inserção de dados da tabela colors:
+INSERT INTO colors(name) VALUES ('Blue'), ('Red'), ('Yellow'), ('Green')
