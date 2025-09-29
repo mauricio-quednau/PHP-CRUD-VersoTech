@@ -9,6 +9,23 @@ class UserController {
     public function __construct() {
         $database = new Database();
         $this->conn = $database->conectar();
+        $this->checkOrCreateTables();
+    }
+
+    private function checkOrCreateTables() {
+        try {
+            $this->conn->query("SELECT 1 FROM users LIMIT 1");
+        } catch (PDOException $e) {
+            $this->createUsersTable();
+        }
+    }
+
+    private function createUsersTable() {
+        $sql = "CREATE TABLE users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL)";
+        $this->conn->exec($sql);
     }
 
     public function getUsuario($dados) {
