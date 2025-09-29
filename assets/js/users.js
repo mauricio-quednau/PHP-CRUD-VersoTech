@@ -62,6 +62,12 @@ document.getElementById('usuarioModal').addEventListener('show.bs.modal', async 
     }
 });
 
+document.getElementById('usuarioModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('usuarioForm').reset();
+    document.getElementById('coresContainer').innerHTML = '';
+    document.getElementById('coresContainer').appendChild(criarSelectCor());
+});
+
 // Adiciona novos campos de cor
 document.getElementById('addCor').addEventListener('click', function () {
     document.getElementById('coresContainer').appendChild(criarSelectCor());
